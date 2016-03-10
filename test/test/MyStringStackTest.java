@@ -22,7 +22,7 @@ public class MyStringStackTest extends TestCase {
 	@Before
 	public void setUp() throws Exception {
 		s1 = "Hello";
-		s2 = "there";	
+		s2 = "there";
 	}
 
 	@After
@@ -44,10 +44,10 @@ public class MyStringStackTest extends TestCase {
 		String o1 = null;
 
 		MyStringStack stack = new MyStringStack();
-        assertTrue ("Initial Stack state", stack.isEmpty());
+        assertTrue ("Initial stack should be empty for this test.", stack.isEmpty());
         try {
             o1 = stack.pop ();
-            fail ("Failed pop()");
+            fail ("Pop() of an empty stack did not throw exception.");
         } catch (NoSuchElementException e) {}
         
 		stack.push(s1);
@@ -55,12 +55,11 @@ public class MyStringStackTest extends TestCase {
 		
 		try {
 			o1 = stack.pop();
-		}catch (NoSuchElementException e) {
-			fail("Falied pop - No Elements");
+		} catch (NoSuchElementException e) {
+			fail("Pop() of a stack with one element failed.");
 		}
-		assertSame (s1,o1);
+		assertSame ("The string popped should be the same as the string pushed", s1,o1);
 		assertTrue ("Stack should be empty after popping all elements", stack.isEmpty());
-		//assertTrue ( stack.isEmpty());
 	}
 
 	@Test
