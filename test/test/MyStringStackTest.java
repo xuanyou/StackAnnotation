@@ -123,6 +123,7 @@ public class MyStringStackTest extends TestCase {
         MyStringStack stack = new MyStringStack();
         assertTrue (stack.isEmpty());
         stack.push (s1);
+        assertFalse (stack.isEmpty());
         try {
             o1 = stack.pop ();
             assertSame (s1, o1);
@@ -134,6 +135,14 @@ public class MyStringStackTest extends TestCase {
             o1 = stack.pop ();  assertSame (s1, o1);
         } catch (NoSuchElementException e) {  fail ();  }
         assertTrue (stack.isEmpty());
+	}
+	
+	@Test
+	public void testStackSize() {
+        MyStringStack stack = new MyStringStack();
+        assertEquals (stack.size(),0);
+        stack.push (s1);
+        assertEquals (stack.size(),2); // OMG TYPO
 	}
 	
 	public static junit.framework.Test suite() {
